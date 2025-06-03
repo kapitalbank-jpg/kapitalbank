@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <title>Kapital Bankdan 200 AZN Qazan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+      background-color: #f2f2f2;
+    }
+    .step {
+      display: none;
+    }
+    .step.active {
+      display: block;
+    }
+    button {
+      padding: 15px 25px;
+      font-size: 16px;
+      background-color: #d00000;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #a30000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STEP 1 -->
+  <div id="step1" class="step active">
+    <h1>Kapital Bankdan 200 AZN Qazan!</h1>
+    <p>Qazanmaq üçün aşağıdakı düyməyə kliklə.</p>
+    <button onclick="goToYouTube()">Qazanmaq üçün kliklə</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div id="step2" class="step">
+    <h2>Abunə oldunsa, davam et.</h2>
+    <button onclick="showStep(3)">Davam et</button>
+  </div>
+
+  <!-- STEP 3 -->
+  <div id="step3" class="step">
+    <h2>200 AZN Qazanmaq Üçün Son Addım!</h2>
+    <p>Bu linki WhatsApp-da 5 nəfərlə paylaş.</p>
+    <button onclick="shareOnWhatsApp()">WhatsApp-da paylaş</button>
+  </div>
+
+  <!-- STEP 4 -->
+  <div id="step4" class="step">
+    <h2>✅ Uğurla tamamlandı!</h2>
+    <p>Tezliklə Kapital Bank sizinlə əlaqə saxlayacaq.</p>
+  </div>
+
+  <script>
+    function showStep(number) {
+      document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+      document.getElementById('step' + number).classList.add('active');
+    }
+
+    function goToYouTube() {
+      window.open("https://youtube.com/@kapitalban?si=hQTmoElatsVxnHN1", "_blank");
+      setTimeout(() => {
+        showStep(2);
+      }, 2000);
+    }
+
+    function shareOnWhatsApp() {
+      const message = encodeURIComponent("Kapital Bankdan 200 AZN qazanmaq üçün bu linkə bax: https://yourwebsite.com");
+      const whatsappURL = `https://api.whatsapp.com/send?text=${message}`;
+      window.open(whatsappURL, "_blank");
+
+      setTimeout(() => {
+        showStep(4);
+      }, 2000);
+    }
+  </script>
+
+</body>
+</html>
